@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="/assets/css/site.css">
+</head>
+
+<body class="bg-gray-200">
+  <!--herobar-->
+  <div class="w-full bg-blue-500 h-12 shadow-outline text-white">
+    <h1 class="text-center text-3xl font-extrabold uppercase ">Mr Baggins Computer Technology</h1>
+  </div>
+
+  <div class="container flex mx-auto flex-wrap px-2">
+    <div class="w-1/5 px-6 text-xl text-gray-800 leading-normal">
+      <!--SideMenu-->
+      <div class="w-full sticky inset-0 my-12 hidden" style="top: 2em;"> <!--I hid the menu with this line-->
+        <p class="text-base font-bold text-gray-700">Menu</p>
+        <div>
+          <ul class="list-reset text-gray-700 text-sm">
+            <li class="my-2 hover:text-blue-400 border-l-4 border-blue-500 hover:border-blue-400">
+              <a href="#section1" class="block pl-4">
+                Home
+              </a>
+            </li>
+            <li class="my-2 hover:text-blue-400 border-l-4 border-blue-500 hover:border-blue-400">
+              <a href="#section2" class="block pl-4">
+                Tasks
+              </a>
+            </li>
+            <li class="my-2 hover:text-blue-400 border-l-4 border-blue-500 hover:border-blue-400">
+              <a href="#section3" class="block pl-4">
+                Messages
+              </a>
+            </li>
+            <li class="my-2 hover:text-blue-400 border-l-4 border-blue-500 hover:border-blue-400">
+              <a href="#section4" class="block pl-4">
+                Analytics
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="w-4/5 my-4">
+      <div class="rounded shadow bg-gray-100 py-4 px-8 my-2" id="section1">
+        <a href="#" class="block text-2xl font-bold">Lesson Content</a>
+        <h1 id="arduino-tutorial---making-music">Arduino Tutorial - Making Music</h1>
+
+<p>While we can’t play an MP3 file or a Youtube clip (because the Arduino isn’t powerful enough), we can still make the tones from last time particular notes, ones that match up to the notes on a piano. Then if we copy the notes from real music sheets, combine that with delay codes that match up to how long to play the note for, we can play actual songs!</p>
+
+<p>Unfortunately, remembering all the numbers for every note would be difficult. We actually used a few last time, the number “262” is “Middle C”, the very middle key on a piano or keyboard, and the middle note when drawing music notes on paper. The notes in the activity which were <code class="language-c highlighter-rouge"><span class="mi">262</span><span class="p">,</span> <span class="mi">294</span><span class="p">,</span> <span class="mi">330</span><span class="p">,</span> <span class="mi">349</span><span class="p">,</span> <span class="mi">392</span><span class="p">,</span> <span class="mi">440</span><span class="p">,</span> <span class="mi">494</span><span class="p">,</span> <span class="mi">554</span></code> are the white keys from Middle C up to the next C note.</p>
+
+<p><img src="assets/img/keyboardNotes.PNG" alt="img" /></p>
+
+<p>But if you’ve used a piano before, you’ll know that we also have all the BLACK keys. These are called sharps or flats. When it’s a sharp it’s named after the white key on its left, and if it’s a flat, it’s named after the key on its right.</p>
+
+<p>In the picture above, the first black key is both C-sharp (C♯) and D-flat (D♭)</p>
+
+<h2 id="code">Code</h2>
+
+<p>So, we need to know a <code class="language-c highlighter-rouge"><span class="n">tone</span></code> number for EVERY key on a piano, including the black keys. It would be nice if we could use the letter codes, and then number them from the lowest note as C1 up to the highest note as C8. We could use CS to say “C-Sharp”</p>
+
+<p><a href="#">Clicking on this link</a> will take you to a text file that you can copy that defines a whole bunch of named notes using this pattern. It’s not a complicated file, just very long. Open it up and copy the whole thing into a new Arduino Sketch.</p>
+
+<p>At the very bottom is our regular <code class="language-c highlighter-rouge"><span class="kt">void</span> <span class="n">setup</span><span class="p">()</span></code> and <code class="language-c highlighter-rouge"><span class="kt">void</span> <span class="n">loop</span><span class="p">()</span></code> spots. Like our first buzzer lesson, we’re going to put our code in <code class="language-c highlighter-rouge"><span class="n">setup</span></code> so it only runs once when we press the reset button.</p>
+
+<p>Try the following code out:</p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre> <span class="n">tone</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">NOTE_E5</span><span class="p">,</span> <span class="mi">450</span><span class="p">);</span>  <span class="n">delay</span><span class="p">(</span><span class="mi">450</span><span class="p">);</span>
+ <span class="n">tone</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">NOTE_D5</span><span class="p">,</span> <span class="mi">150</span><span class="p">);</span>  <span class="n">delay</span><span class="p">(</span><span class="mi">150</span><span class="p">);</span>
+ <span class="n">tone</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">NOTE_CS5</span><span class="p">,</span> <span class="mi">150</span><span class="p">);</span> <span class="n">delay</span><span class="p">(</span><span class="mi">150</span><span class="p">);</span>
+ <span class="n">tone</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">NOTE_B4</span><span class="p">,</span> <span class="mi">150</span><span class="p">);</span>  <span class="n">delay</span><span class="p">(</span><span class="mi">150</span><span class="p">);</span>
+ <span class="n">tone</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">NOTE_GS4</span><span class="p">,</span> <span class="mi">150</span><span class="p">);</span> <span class="n">delay</span><span class="p">(</span><span class="mi">150</span><span class="p">);</span>
+ <span class="n">tone</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">NOTE_E4</span><span class="p">,</span> <span class="mi">300</span><span class="p">);</span>  <span class="n">delay</span><span class="p">(</span><span class="mi">300</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Make sure it works! If you’re not getting sound, make sure your buzzer is on <code class="language-c highlighter-rouge"><span class="n">pin</span> <span class="mi">3</span></code> or change the code above so the <code class="language-c highlighter-rouge"><span class="mi">3</span></code>s are wherever it is wired into.</p>
+
+<p>The next image is very wide, showing the entire score (notes) for the whole song we’re playing. Click on it and work your way through each bar of music, leaving a gap after each one so it’s easy to work out where you’re up to.</p>
+
+<p><a href="assets/img/wholeMusic.png"><img src="assets/img/wholeMusic.png" alt="img" /></a></p>
+
+<p>The first bar is the 6 notes we have already written. Look closely at the notes in the picture and the code we have written</p>
+
+<p><img src="assets/img/zoomedMusic.png" alt="img" /></p>
+
+<ul>
+  <li>The first note is labelled E5. Our code says <code class="language-c highlighter-rouge"><span class="n">NOTE_E5</span></code></li>
+  <li>It’s got a straight tail, which means it has a duration and delay of 300, but because it has a dot, it turns into 450. Make sure both numbers match!</li>
+  <li>The second note is D5. It has a connected tail, so it’s delay and duration is only 150.</li>
+  <li>The last note is an E4 and has a straight tail (and no dot). So it’s 300 duration.</li>
+  <li>Now leave a gap line in the code, because the line at the end is the bar, finishing this group of six notes.</li>
+</ul>
+
+<p><img src="assets/img/noteLengths.PNG" alt="img" /></p>
+
+<p>Make your way through the whole song. Part way through the music I stopped including the note names, so you’ll have to look back to work out what each one is. You don’t need to be able to read music, just find a note that’s on the same line or the same gap between lines. (EG: Notice that the first note is an E5, and it sits on top of the top line. Now notice the E5 that is the third “white” note. Even though it’s a different colour, it’s an E5 because it is sitting on top of that line).</p>
+
+<p>Work out the note name. Work out the duration using the image above. As you finish each bar, leave a gap, and test your song so far.</p>
+
+<blockquote>
+  <p><em>If you know how to read music a little bit, you might think these notes are wrong, and that the lines should be “EGBDF” or “Every Good Boy Deserves Fruit” or similar. That’s true when you first start reading music, but as you get deeper, you’ll learn about scales. The start of the music document has 3 ♭ symbols that tell the reader this isn’t a “normal” set of music, and that some notes need to be shifted to the black keys. It makes the score less complicated looking, but requires the reader to remember which notes to move.</em></p>
+</blockquote>
+
+<h3 id="more-things-to-try">More things to try</h3>
+
+<p>Finished this song? Great! find the score for a song you want to code up. Nothing too long or complicated, and songs with lots of instruments or distortion don’t tend to work well. Find the notes, maybe ask about the scale, and turn it into notes. Once you know the notes, you can turn it into Arduino code.</p>
+
+<p>There’s also lots of existing Arduino music code available online, but they might make it work in different ways that aren’t compatible with this method. Try them out, but be aware it might be harder to understand.</p>
+
+      </div>
+
+
+  </div>
+
+  
+</div>
+<!--footer-->
+  <div class="w-auto bg-gray-700 h-auto flex justify-around p-4 text-xs px-64">
+    <div class="p-4 border border-gray-600 w-1/3 rounded text-gray-400 mx-2">
+      <p>This text hasn't been updated yet. Be nice!</p>
+    </div>
+    <div class="p-4 border border-gray-600 w-1/3 rounded text-gray-400 mx-2">
+      <p>This is my new site</p>
+    </div>
+    <div class="p-4 border border-gray-600 w-1/3 rounded text-gray-400 mx-2">
+      <p>This is the stuff I need to adjust later</p>
+    </div>
+  </div>
+  
+
+</body>
+
+</html>

@@ -602,6 +602,7 @@ video {
 
 h1, h2, h3, h4, h5 {
   font-weight: 700;
+  margin-top: 0.75rem;
 }
 
 h1 {
@@ -614,6 +615,11 @@ h2 {
 
 h3 {
   font-size: 1.125rem;
+}
+
+p {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .lessonSection ul, .lessonSection ol{
@@ -644,6 +650,18 @@ h3 {
 
 .lessonSection li {
   counter-increment: li;
+}
+
+img {
+  align-self: center;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+blockquote {
 }
 
 .container {
@@ -682,7 +700,12 @@ h3 {
 }
 
 code.highlighter-rouge{
-  padding: 1px 4px;
+  padding: 0px 4px;
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+  height: 24px;
+  overflow: hidden;
 }
 
 div.highlighter-rouge, figure.highlighter-rouge, code.highlighter-rouge, figure.highlight{
@@ -19242,6 +19265,26 @@ code.highlighter-rouge {
   --border-opacity: 1;
   border-color: #bee3f8;
   border-color: rgba(190, 227, 248, var(--border-opacity));
+}
+
+blockquote {
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-width: 1px;
+  --border-opacity: 1;
+  border-color: #63b3ed;
+  border-color: rgba(99, 179, 237, var(--border-opacity));
+  --bg-opacity: 1;
+  background-color: #ebf8ff;
+  background-color: rgba(235, 248, 255, var(--bg-opacity));
+  --text-opacity: 1;
+  color: #2c5282;
+  color: rgba(44, 82, 130, var(--text-opacity));
+  border-radius: 0.25rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 
 @media (min-width: 640px) {
@@ -92927,4 +92970,3 @@ code.highlighter-rouge {
     transition-delay: 1000ms;
   }
 }
-             

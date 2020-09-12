@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="/assets/css/site.css">
+</head>
+
+<body class="bg-gray-200">
+  <!--herobar-->
+  <div class="w-full bg-blue-500 h-12 shadow-outline text-white">
+    <h1 class="text-center text-3xl font-extrabold uppercase ">Mr Baggins Computer Technology</h1>
+  </div>
+
+  <div class="container flex mx-auto flex-wrap px-2">
+    <div class="w-1/5 px-6 text-xl text-gray-800 leading-normal">
+      <!--SideMenu-->
+      <div class="w-full sticky inset-0 my-12 hidden" style="top: 2em;"> <!--I hid the menu with this line-->
+        <p class="text-base font-bold text-gray-700">Menu</p>
+        <div>
+          <ul class="list-reset text-gray-700 text-sm">
+            <li class="my-2 hover:text-blue-400 border-l-4 border-blue-500 hover:border-blue-400">
+              <a href="#section1" class="block pl-4">
+                Home
+              </a>
+            </li>
+            <li class="my-2 hover:text-blue-400 border-l-4 border-blue-500 hover:border-blue-400">
+              <a href="#section2" class="block pl-4">
+                Tasks
+              </a>
+            </li>
+            <li class="my-2 hover:text-blue-400 border-l-4 border-blue-500 hover:border-blue-400">
+              <a href="#section3" class="block pl-4">
+                Messages
+              </a>
+            </li>
+            <li class="my-2 hover:text-blue-400 border-l-4 border-blue-500 hover:border-blue-400">
+              <a href="#section4" class="block pl-4">
+                Analytics
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="w-4/5 my-4">
+      <div class="rounded shadow bg-gray-100 py-4 px-8 my-2" id="section1">
+        <a href="#" class="block text-2xl font-bold">Lesson Content</a>
+        <h1 id="arduino-tutorial---making-noise">Arduino Tutorial - Making noise</h1>
+
+<p>While the Arduino isn’t powerful enough to play an MP3 file, it can still make sounds. Not only can it make sound, it is able to make a complete range of sounds and even comes with a helper function to make it work better. Sound works on the same idea as fading a light in and out, and uses a PWM pin to be able to output various frequencies to turn into various pitches of sound.</p>
+
+<p>We’ll start simple, making a couple of different noises and Morse code, but eventually working up to tones, chimes and even songs.</p>
+
+<h2 id="wiring">Wiring</h2>
+<p>Wiring a buzzer to make noise is really easy. We need to supply a signal to the <code class="language-c highlighter-rouge"><span class="n">S</span> <span class="n">pin</span></code> from one of our PWM pins so today we’ll use <code class="language-c highlighter-rouge"><span class="n">pin</span> <span class="mi">3</span></code>, and we need to connect the <code class="language-c highlighter-rouge"><span class="o">-</span> <span class="n">pin</span></code>  to ground, or <code class="language-c highlighter-rouge"><span class="n">GND</span></code>. That’s it!</p>
+
+<p><img src="assets/img/buzzerwiring.png" alt="img" /></p>
+
+<h2 id="code">Code</h2>
+<p>Getting started with this is really easy. Start a new project, and write the following code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>  <span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">tone</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">262</span><span class="p">,</span> <span class="mi">50</span><span class="p">);</span> <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{};</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>We’re putting the code into <code class="language-c highlighter-rouge"><span class="n">setup</span></code> and not <code class="language-c highlighter-rouge"><span class="n">loop</span></code> so that we only play the sound once. If we want to hear it again, we just need to hit the reset button. Upload it and try it out. You should hear a little “Buzz”</p>
+
+<p>Try making your code look like this instead. Keep the loop at the bottom, we’re not using it anymore but the Arduino needs it to be there, even if it’s empty.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>  <span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">tone</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">262</span><span class="p">,</span> <span class="mi">50</span><span class="p">);</span> <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+    <span class="n">tone</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">262</span><span class="p">,</span> <span class="mi">50</span><span class="p">);</span> <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+    <span class="n">tone</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">262</span><span class="p">,</span> <span class="mi">50</span><span class="p">);</span> <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+  <span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<blockquote>
+  <p>What’s the difference? You might not even be able to tell.</p>
+</blockquote>
+
+<h3 id="whats-going-on">What’s going on?</h3>
+
+<p>To make the tone code work properly we have to do five things:</p>
+
+<p><img src="assets/img/toneExplain.PNG" alt="img" /></p>
+
+<p>We need the extra <code class="language-c highlighter-rouge"><span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span></code> on the end because of how slow the Arduino is. It needs a break between tones and other jobs. It’s also easy to keep track of if we put it all on one line like this. A delay of 50 is very short. Try changing both <code class="language-c highlighter-rouge"><span class="mi">50</span></code>s so they’re <code class="language-c highlighter-rouge"><span class="mi">500</span></code>s</p>
+
+<blockquote>
+  <p>Try and make the buzzer say “SOS” in morse code. You’ll need to adjust the delay(##) numbers so that they leave a small gap after the tone.
+“SOS” is <strong>short-short-short … long-long-long … short-short-short</strong>.
+Make each short buzz <code class="language-c highlighter-rouge"><span class="mi">150</span></code> and each long buzz <code class="language-c highlighter-rouge"><span class="mi">500</span></code>. The delay after each one should be 100 bigger (<code class="language-c highlighter-rouge"><span class="mi">250</span></code> and <code class="language-c highlighter-rouge"><span class="mi">600</span></code>)</p>
+</blockquote>
+
+<h2 id="different-sounds">Different sounds</h2>
+
+<p>Aside from length of sound, we can adjust the tone itself. The 262 above is “Middle C” or just a normal musical note. We can adjust this up and down to make the sound higher or lower.</p>
+
+<p>Try this code instead:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>  <span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">tone</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">262</span><span class="p">,</span> <span class="mi">150</span><span class="p">);</span> <span class="n">delay</span><span class="p">(</span><span class="mi">150</span><span class="p">);</span>
+    <span class="n">tone</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">294</span><span class="p">,</span> <span class="mi">150</span><span class="p">);</span> <span class="n">delay</span><span class="p">(</span><span class="mi">150</span><span class="p">);</span>
+    <span class="n">tone</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">330</span><span class="p">,</span> <span class="mi">150</span><span class="p">);</span> <span class="n">delay</span><span class="p">(</span><span class="mi">150</span><span class="p">);</span>
+  <span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Notice we changed the second number in <code class="language-c highlighter-rouge"><span class="n">tone</span></code>. This changes the pitch.</p>
+
+<blockquote>
+  <p>Continue this code using the numbers <code class="language-c highlighter-rouge"><span class="mi">262</span><span class="p">,</span> <span class="mi">294</span><span class="p">,</span> <span class="mi">330</span><span class="p">,</span> <span class="mi">349</span><span class="p">,</span> <span class="mi">392</span><span class="p">,</span> <span class="mi">440</span><span class="p">,</span> <span class="mi">494</span><span class="p">,</span> <span class="mi">554</span></code>. <br />
+Try making it play the tones <code class="language-c highlighter-rouge"><span class="mi">175</span><span class="p">,</span> <span class="mi">175</span><span class="p">,</span> <span class="mi">175</span><span class="p">,</span> <span class="mi">147</span></code> with durations of <code class="language-c highlighter-rouge"><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">900</span></code> and delays of <code class="language-c highlighter-rouge"><span class="mi">400</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">1000</span></code>. What song is it?</p>
+</blockquote>
+
+<h3 id="more-things-to-try">More things to try</h3>
+
+<p>Have a play with the tones, durations and delays. See if you can work out how to make a door bell, or a police siren, or other simple tunes of a few notes.</p>
+
+<p>See if you can sync up an LED to the tones. You might have to put the <code class="language-c highlighter-rouge"><span class="n">digitalWrite</span></code> code BETWEEN the <code class="language-c highlighter-rouge"><span class="n">tone</span></code> and <code class="language-c highlighter-rouge"><span class="n">delay</span></code> codes.</p>
+
+
+      </div>
+
+
+  </div>
+
+  
+</div>
+<!--footer-->
+  <div class="w-auto bg-gray-700 h-auto flex justify-around p-4 text-xs px-64">
+    <div class="p-4 border border-gray-600 w-1/3 rounded text-gray-400 mx-2">
+      <p>This text hasn't been updated yet. Be nice!</p>
+    </div>
+    <div class="p-4 border border-gray-600 w-1/3 rounded text-gray-400 mx-2">
+      <p>This is my new site</p>
+    </div>
+    <div class="p-4 border border-gray-600 w-1/3 rounded text-gray-400 mx-2">
+      <p>This is the stuff I need to adjust later</p>
+    </div>
+  </div>
+  
+
+</body>
+
+</html>
