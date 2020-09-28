@@ -3,50 +3,21 @@
 
 <head>
   <meta charset="utf-8">
-  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Buzzer 1</title>
   <link rel="stylesheet" href="/assets/css/site.css">
 </head>
 
 <body class="bg-gray-200">
   <!--herobar-->
-  <div class="w-full bg-blue-500 h-12 shadow-outline text-white">
+  <div class=" bg-blue-500 h-12 shadow-outline text-white">
     <h1 class="text-center text-3xl font-extrabold uppercase ">Mr Baggins Computer Technology</h1>
   </div>
 
-  <div class="container flex mx-auto flex-wrap px-2">
-    <div class="w-1/5 px-6 text-xl text-gray-800 leading-normal">
-      <!--SideMenu-->
-      <div class="w-full sticky inset-0 my-12 hidden" style="top: 2em;"> <!--I hid the menu with this line-->
-        <p class="text-base font-bold text-gray-700">Menu</p>
-        <div>
-          <ul class="list-reset text-gray-700 text-sm">
-            <li class="my-2 hover:text-blue-400 border-l-4 border-blue-500 hover:border-blue-400">
-              <a href="#section1" class="block pl-4">
-                Home
-              </a>
-            </li>
-            <li class="my-2 hover:text-blue-400 border-l-4 border-blue-500 hover:border-blue-400">
-              <a href="#section2" class="block pl-4">
-                Tasks
-              </a>
-            </li>
-            <li class="my-2 hover:text-blue-400 border-l-4 border-blue-500 hover:border-blue-400">
-              <a href="#section3" class="block pl-4">
-                Messages
-              </a>
-            </li>
-            <li class="my-2 hover:text-blue-400 border-l-4 border-blue-500 hover:border-blue-400">
-              <a href="#section4" class="block pl-4">
-                Analytics
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="w-4/5 my-4">
-      <div class="rounded shadow bg-gray-100 py-4 px-8 my-2" id="section1">
-        <a href="#" class="block text-2xl font-bold">Lesson Content</a>
+  <div class=" container flex mx-auto flex-wrap px-2">
+    
+    <div class="my-4">
+      <div class="w-full rounded shadow bg-gray-100 py-4 px-8 my-2" id="section1">
         <h1 id="arduino-tutorial---making-noise">Arduino Tutorial - Making noise</h1>
 
 <p>While the Arduino isn’t powerful enough to play an MP3 file, it can still make sounds. Not only can it make sound, it is able to make a complete range of sounds and even comes with a helper function to make it work better. Sound works on the same idea as fading a light in and out, and uses a PWM pin to be able to output various frequencies to turn into various pitches of sound.</p>
@@ -56,7 +27,7 @@
 <h2 id="wiring">Wiring</h2>
 <p>Wiring a buzzer to make noise is really easy. We need to supply a signal to the <code class="language-c highlighter-rouge"><span class="n">S</span> <span class="n">pin</span></code> from one of our PWM pins so today we’ll use <code class="language-c highlighter-rouge"><span class="n">pin</span> <span class="mi">3</span></code>, and we need to connect the <code class="language-c highlighter-rouge"><span class="o">-</span> <span class="n">pin</span></code>  to ground, or <code class="language-c highlighter-rouge"><span class="n">GND</span></code>. That’s it!</p>
 
-<p><img src="assets/img/buzzerwiring.png" alt="img" /></p>
+<p><img src="../../assets/img/buzzerwiring.png" alt="img" /></p>
 
 <h2 id="code">Code</h2>
 <p>Getting started with this is really easy. Start a new project, and write the following code:</p>
@@ -95,7 +66,7 @@
 
 <p>To make the tone code work properly we have to do five things:</p>
 
-<p><img src="assets/img/toneExplain.PNG" alt="img" /></p>
+<p><img src="../../assets/img/toneExplain.PNG" alt="img" /></p>
 
 <p>We need the extra <code class="language-c highlighter-rouge"><span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span></code> on the end because of how slow the Arduino is. It needs a break between tones and other jobs. It’s also easy to keep track of if we put it all on one line like this. A delay of 50 is very short. Try changing both <code class="language-c highlighter-rouge"><span class="mi">50</span></code>s so they’re <code class="language-c highlighter-rouge"><span class="mi">500</span></code>s</p>
 
