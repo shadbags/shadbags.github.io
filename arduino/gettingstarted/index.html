@@ -1,0 +1,197 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Getting Started</title>
+  <link rel="stylesheet" href="/assets/css/site.css">
+</head>
+
+<body class="bg-gray-200">
+  <!--herobar-->
+  <div class=" bg-blue-500 h-12 shadow-outline text-white">
+    <h1 class="text-center text-3xl font-extrabold uppercase ">Mr Baggins Computer Technology</h1>
+  </div>
+
+  <div class=" container flex mx-auto flex-wrap px-2">
+    
+    <div class="my-4">
+      <div class="w-full rounded shadow bg-gray-100 py-4 px-8 my-2" id="section1">
+        <h1 id="arduino-tutorial---getting-started">Arduino Tutorial - Getting Started</h1>
+
+<p>The very first thing every electronics course does is teach you to blink a light, and this is no different. We’re going to jump in straight to making it do something, then explain what we just did before moving on.</p>
+
+<blockquote>
+  <p>Open the Arduino IDE. Your teacher willl tell you where to find it
+Press <code class="language-c highlighter-rouge"><span class="n">Ctrl</span> <span class="o">+</span></code> a few times to make the writing bigger
+Delete the code that is already there</p>
+</blockquote>
+
+<p>The program you’ve just opened lets us write code, and then pushes it over to the Arduino board where it will live forever, doing whatever the code says, until we overwrite it again. When we code, we need to make especially sure we get capitals, punctuation and brackets exactly right.</p>
+
+<p>Copy the following code into the Arduino IDE, making sure to get it <strong><em>exactly</em></strong> the same. Copy paste is an option, but before long you’ll be told to write your own code that isn’t on this site, so it’s probably worth typing at least some of this code yourself for practice.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="k">const</span> <span class="kt">int</span> <span class="n">LED</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">LED</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>We can check our code to see if it can be understood by the Arduino by <strong><em>compiling</em></strong> it. This will get it ready for the Arduino UNO even if the computer isn’t connected to it yet. We do this by clicking the <code class="language-c highlighter-rouge"><span class="n">Tick</span></code> icon in the top left corner. First you will get a box asking if you want to save, which you <em>absolutely</em> should. Then down the bottom it will say <strong>“Compiling Sketch”</strong> and then hopefully <strong>Done Compiling</strong>. If it goes orange, it means something went wrong. Make sure your code matches <strong><em>exactly</em></strong>.</p>
+
+<blockquote>
+  <p>Compile your code by clicking the <code class="language-c highlighter-rouge"><span class="n">Tick</span></code> button. When it asks where to save, make sure to put it in your home folder, and give it the name “Blink” so that we can tell it apart from all our future projects. <strong><em>If you don’t save your work where you can find it, you’ll have to rewrite code again later on.</em></strong></p>
+</blockquote>
+
+<h2 id="getting-connected">Getting connected</h2>
+<p>At this point, we have successfully written our code, but unless you’ve done this before, we have no idea what it does. We need to move our code onto the Arduino board so that it can actually use it. When we first plug in an Arduino board, it can sometimes take a little while for the IDE to see it. We need to make sure it does before we can proceed. We check by looking at the connected ports in the IDE.</p>
+
+<blockquote>
+  <p>Go to the <code class="language-c highlighter-rouge"><span class="n">View</span></code> menu at the top of the IDE, look for <code class="language-c highlighter-rouge"><span class="n">Port</span></code> and see what options are there.</p>
+</blockquote>
+
+<p>These are the ports the computer can already talk to. They are NOT the ones we want. Ever.</p>
+
+<blockquote>
+  <p>Now plug in the Arduino using a USB cable to a port on the computer. Let the board do whatever it’s doing (It will flash a few times) and when it settles down there should be at least one light on it. After a few seconds, go back to <code class="language-c highlighter-rouge"><span class="n">View</span></code> and <code class="language-c highlighter-rouge"><span class="n">Port</span></code> and find out which port has shown up. This is your Arduino port.</p>
+</blockquote>
+
+<p>Using different plugs on the computer will change this number. If you ever see <strong><em>Problem uploading to board</em></strong> in the orange error bar, it’s because this port number is wrong.</p>
+
+<h2 id="pushing-code-to-the-arduino">Pushing code to the Arduino</h2>
+
+<p>With the IDE now knowing where to find the Arduino, we can finally send our code to it. Find and push the <code class="language-c highlighter-rouge"><span class="n">Upload</span></code> button, it is the arrow next to the Compile <code class="language-c highlighter-rouge"><span class="n">Tick</span></code>. Down the bottom it will say “Uploading” and then hopefully “Done Uploading”. While this happens, some more lights on the Arduino will flash to show it is talking to the computer and getting new code. Once it says “Done uploading” our code is now on the Arduino and running. Hopefully you can see something happening!</p>
+
+<h2 id="changing-the-code">Changing the code</h2>
+
+<p>We’ve made a blinky light! The speed of the blinks is controlled by how much <code class="language-c highlighter-rouge"><span class="n">delay</span></code> the code has between turning off and on. Notice that the code has two <code class="language-c highlighter-rouge"><span class="n">delay</span></code> lines, and both have a number. Big numbers = big delay = slow. It’s measured in milliseconds which means 1000 = 1 second, so <code class="language-c highlighter-rouge"><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span></code> means “delay one second”</p>
+
+<blockquote>
+  <p>Change both of the <code class="language-c highlighter-rouge"><span class="n">delay</span></code> lines from <code class="language-c highlighter-rouge"><span class="mi">1000</span></code> to <code class="language-c highlighter-rouge"><span class="mi">100</span></code> and see what happens.
+Try to make a light that stays on for two seconds then turns off for 250 milliseconds (Long on, short off)</p>
+</blockquote>
+
+<h2 id="new-symbols">New symbols</h2>
+
+<p>There’s some punctuation you probably haven’t used before in this code. Semicolons, curly brackets, round brackets, angle brackets, and double quotes. Get used to these and their names, because we need them a lot in the future.</p>
+
+<h2 id="inspecting-the-code">Inspecting the code</h2>
+
+<p>We should take a closer look at the 3 sections of our code before we finish up</p>
+
+<table class="text-left border shadow-lg">
+<thead>
+  <tr>
+    <th class="p-2">Section of code</th>
+    <th class="p-2">What it does</th>
+  </tr>
+</thead>
+<tbody>
+  <tr class="border">
+    <td class="py-2">
+        <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="k">const</span> <span class="kt">int</span> <span class="n">LED</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div>        </div>
+      </td>
+    <td class="p-2">
+        <p>This tells the Arduino to keep track of the number 13 as the name <code class="language-c highlighter-rouge"><span class="n">LED</span></code> so that we can write <code class="language-c highlighter-rouge"><span class="n">LED</span></code>”` later to talk about Pin number 13.</p>
+
+      </td>
+  </tr>
+  <tr class="border">
+    <td class="py-2">
+        <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">LED</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div>        </div>
+      </td>
+    <td class="p-2">
+        <p><code class="language-c highlighter-rouge"><span class="n">Setup</span></code> code runs once, when the Arduino first boots up each time it gets power. Restarting or unplugging and re-plugging the Arduino will make it go again. The <code class="language-c highlighter-rouge"><span class="n">pinMode</span></code> code tells the Arduino that <code class="language-c highlighter-rouge"><span class="n">LED</span></code> (which is #13 remember) will be an <code class="language-c highlighter-rouge"><span class="n">OUTPUT</span></code>.  This lets it control a light (or a buzzer, or a motor)</p>
+      </td>
+  </tr>
+  <tr class="border">
+    <td class="py-2">
+        <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div>        </div>
+      </td>
+    <td class="p-2">
+        <p><code class="language-c highlighter-rouge"><span class="n">Loop</span></code> runs forever once setup is finished. It’s usually the biggest part of your code. It will keep doing it as quick as it can over and over. <code class="language-c highlighter-rouge"><span class="n">DigitalWrite</span></code> lets us turn a pin like #13 <code class="language-c highlighter-rouge"><span class="n">HIGH</span></code> or <code class="language-c highlighter-rouge"><span class="n">LOW</span></code> to turn it ON or OFF. <code class="language-c highlighter-rouge"><span class="n">Delay</span></code> tells the Arduino to wait that many milliseconds. <code class="language-c highlighter-rouge"><span class="mi">1000</span></code> = 1 second. 500 = half a second.</p>
+      </td>
+  </tr>
+</tbody>
+</table>
+
+<h2 id="wrapping-up">Wrapping up</h2>
+
+<p>Make sure you understand how the code is controlling the light in the above code. Once you do, complete the following challenge activities. You might have already done some while experimenting so they can get signed off straight away.</p>
+
+<blockquote>
+  <ol>
+    <li>Make the light blink</li>
+    <li>Make the light blink faster (Lower delay values)</li>
+    <li>Make the light stay off for a long time, then do a single quick flash</li>
+    <li>Make the light blink 3 times fast, then stay off for a long time</li>
+    <li>Make sure at least one of these is saved as “Blink” in your home folder</li>
+  </ol>
+</blockquote>
+
+
+      </div>
+
+
+  </div>
+
+  
+</div>
+<!--footer-->
+  <div class="w-auto bg-gray-700 h-auto flex justify-around p-4 text-xs px-64">
+    <div class="p-4 border border-gray-600 w-1/3 rounded text-gray-400 mx-2">
+      <p>This text hasn't been updated yet. Be nice!</p>
+    </div>
+    <div class="p-4 border border-gray-600 w-1/3 rounded text-gray-400 mx-2">
+      <p>This is my new site</p>
+    </div>
+    <div class="p-4 border border-gray-600 w-1/3 rounded text-gray-400 mx-2">
+      <p>This is the stuff I need to adjust later</p>
+    </div>
+  </div>
+  
+
+</body>
+
+</html>

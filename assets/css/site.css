@@ -622,12 +622,12 @@ p {
   margin-bottom: 0.5rem;
 }
 
-.lessonSection ul, .lessonSection ol{
+ul, ol{
   margin-left: 0.5rem;
   counter-reset: li;
 }
 
-.lessonSection ul>li::before {
+ul>li::before {
   content: "•";
   display: inline-block;
   width: 1em;
@@ -636,7 +636,7 @@ p {
   color: rgba(49, 130, 206, var(--text-opacity));
 }
 
-.lessonSection ol>li::before {
+ol>li::before {
   content: counter(li);
   display: inline-block;
   width: 1em;
@@ -648,7 +648,7 @@ p {
   font-weight: 700;
 }
 
-.lessonSection li {
+li {
   counter-increment: li;
 }
 
@@ -92985,4 +92985,4 @@ code.highlighter-rouge {
   }
 }
             
- 
+  
