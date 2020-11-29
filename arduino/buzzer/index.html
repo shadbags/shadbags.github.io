@@ -27,7 +27,7 @@
 <h2 id="wiring">Wiring</h2>
 <p>Wiring a buzzer to make noise is really easy. We need to supply a signal to the <code class="language-c highlighter-rouge"><span class="n">S</span> <span class="n">pin</span></code> from one of our PWM pins so today we’ll use <code class="language-c highlighter-rouge"><span class="n">pin</span> <span class="mi">3</span></code>, and we need to connect the <code class="language-c highlighter-rouge"><span class="o">-</span> <span class="n">pin</span></code>  to ground, or <code class="language-c highlighter-rouge"><span class="n">GND</span></code>. That’s it!</p>
 
-<p><img src="../../assets/img/buzzerwiring.png" alt="img" /></p>
+<p><img src="/assets/img/buzzerwiring.png" alt="img" /></p>
 
 <h2 id="code">Code</h2>
 <p>Getting started with this is really easy. Start a new project, and write the following code:</p>
@@ -66,7 +66,7 @@
 
 <p>To make the tone code work properly we have to do five things:</p>
 
-<p><img src="../../assets/img/toneExplain.PNG" alt="img" /></p>
+<p><img src="/assets/img/toneExplain.PNG" alt="img" /></p>
 
 <p>We need the extra <code class="language-c highlighter-rouge"><span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span></code> on the end because of how slow the Arduino is. It needs a break between tones and other jobs. It’s also easy to keep track of if we put it all on one line like this. A delay of 50 is very short. Try changing both <code class="language-c highlighter-rouge"><span class="mi">50</span></code>s so they’re <code class="language-c highlighter-rouge"><span class="mi">500</span></code>s</p>
 

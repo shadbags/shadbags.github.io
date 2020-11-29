@@ -24,7 +24,7 @@
 
 <p>Unfortunately, remembering all the numbers for every note would be difficult. We actually used a few last time, the number “262” is “Middle C”, the very middle key on a piano or keyboard, and the middle note when drawing music notes on paper. The notes in the activity which were <code class="language-c highlighter-rouge"><span class="mi">262</span><span class="p">,</span> <span class="mi">294</span><span class="p">,</span> <span class="mi">330</span><span class="p">,</span> <span class="mi">349</span><span class="p">,</span> <span class="mi">392</span><span class="p">,</span> <span class="mi">440</span><span class="p">,</span> <span class="mi">494</span><span class="p">,</span> <span class="mi">554</span></code> are the white keys from Middle C up to the next C note.</p>
 
-<p><img src="../../assets/img/keyboardNotes.PNG" alt="img" /></p>
+<p><img src="/assets/img/keyboardNotes.PNG" alt="img" /></p>
 
 <p>But if you’ve used a piano before, you’ll know that we also have all the BLACK keys. These are called sharps or flats. When it’s a sharp it’s named after the white key on its left, and if it’s a flat, it’s named after the key on its right.</p>
 
@@ -34,7 +34,7 @@
 
 <p>So, we need to know a <code class="language-c highlighter-rouge"><span class="n">tone</span></code> number for EVERY key on a piano, including the black keys. It would be nice if we could use the letter codes, and then number them from the lowest note as C1 up to the highest note as C8. We could use CS to say “C-Sharp”</p>
 
-<p><a href="../../assets/code/notes.txt">Clicking on this link</a> will take you to a text file that you can copy that defines a whole bunch of named notes using this pattern. It’s not a complicated file, just very long. Open it up and copy the whole thing into a new Arduino Sketch.</p>
+<p><a href="/assets/code/notes.txt">Clicking on this link</a> will take you to a text file that you can copy that defines a whole bunch of named notes using this pattern. It’s not a complicated file, just very long. Open it up and copy the whole thing into a new Arduino Sketch.</p>
 
 <p>At the very bottom is our regular <code class="language-c highlighter-rouge"><span class="kt">void</span> <span class="n">setup</span><span class="p">()</span></code> and <code class="language-c highlighter-rouge"><span class="kt">void</span> <span class="n">loop</span><span class="p">()</span></code> spots. Like our first buzzer lesson, we’re going to put our code in <code class="language-c highlighter-rouge"><span class="n">setup</span></code> so it only runs once when we press the reset button.</p>
 
@@ -57,11 +57,11 @@
 
 <p>The next image is very wide, showing the entire score (notes) for the whole song we’re playing. Click on it and work your way through each bar of music, leaving a gap after each one so it’s easy to work out where you’re up to.</p>
 
-<p><a href="../../assets/img/wholeMusic.png"><img src="../../assets/img/wholeMusic.png" alt="img" /></a></p>
+<p><a href="../../assets/img/wholeMusic.png"><img src="/assets/img/wholeMusic.png" alt="img" /></a></p>
 
 <p>The first bar is the 6 notes we have already written. Look closely at the notes in the picture and the code we have written</p>
 
-<p><img src="../../assets/img/zoomedMusic.png" alt="img" /></p>
+<p><img src="/assets/img/zoomedMusic.png" alt="img" /></p>
 
 <ul>
   <li>The first note is labelled E5. Our code says <code class="language-c highlighter-rouge"><span class="n">NOTE_E5</span></code></li>
@@ -71,7 +71,7 @@
   <li>Now leave a gap line in the code, because the line at the end is the bar, finishing this group of six notes.</li>
 </ul>
 
-<p><img src="../../assets/img/noteLengths.PNG" alt="img" /></p>
+<p><img src="/assets/img/noteLengths.PNG" alt="img" /></p>
 
 <p>Make your way through the whole song. Part way through the music I stopped including the note names, so you’ll have to look back to work out what each one is. You don’t need to be able to read music, just find a note that’s on the same line or the same gap between lines. (EG: Notice that the first note is an E5, and it sits on top of the top line. Now notice the E5 that is the third “white” note. Even though it’s a different colour, it’s an E5 because it is sitting on top of that line).</p>
 
