@@ -1,0 +1,198 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Getting Started</title>
+  <link rel="stylesheet" href="/assets/css/site.css">
+</head>
+
+<body class="bg-gray-200">
+  <!--herobar-->
+  <div class=" bg-blue-500 h-12 shadow-outline text-white">
+    <h1 class="text-center text-3xl font-extrabold uppercase ">Mr Baggins Computer Technology</h1>
+  </div>
+
+  <div class=" container flex mx-auto flex-wrap px-2">
+    
+    <div class="my-4">
+      <div class="w-full rounded shadow bg-gray-100 py-4 px-8 my-2" id="section1">
+        <h1 id="visual-basic-tutorial---getting-started">Visual Basic Tutorial - Getting Started</h1>
+
+<p>We are going to use a program called Visual Studio to create programs and games. To do this, we need to learn a programming language. There are many different languages to pick from but to keep things simple at first, we will be learning Visual Basic.NET <em>(Pronounced “Visual Basic DOT Net”)</em>. Visual basic or “VB” is a great beginner’s language because it reads
+similar to English, and because we can still use visual elements like buttons and images.</p>
+
+<h2 id="the-plan">The plan</h2>
+<p>Our first project is going to be a basic fun little prank program to make sure everything is installed and working, as well as starting us into programming. First, we will list what we want to achieve.</p>
+<ul>
+  <li>A button on the screen</li>
+  <li>When we try to click it, it moves away</li>
+  <li>To make it extra annoying, it will change colour each time it moves.</li>
+  <li>There’s probably even more ways to make it better for after this</li>
+</ul>
+
+<h3 id="step-1---open-the-programming-program">Step 1 - Open the programming program</h3>
+
+<p>Our first step is to open Visual Studio Express 2012. This is going to be where we do most of our work now and in every lesson. The first time you open it might be quite slow. Eventually we want to get to this screen.</p>
+
+<p><img src="/assets/img/vblessons/vbloadingimage.png" alt="img" /></p>
+
+<p>On the left side, click <code class="language-c highlighter-rouge"><span class="n">New</span> <span class="n">Project</span><span class="p">.</span></code></p>
+
+<p>For our very first project we aren’t going to change anything at all, so immediately click <code class="language-c highlighter-rouge"><span class="n">OK</span></code> down the bottom to open a new blank project.</p>
+
+<h3 id="step-2---running-our-first-program">Step 2 - Running our first program</h3>
+
+<p>We have already made a program! We can see it already as the window on the screen with “Form1” written on it. Up the top, click <code class="language-c highlighter-rouge"><span class="n">Start</span> <span class="err">▶</span></code>  to have our program run. It should pop up our Form1 window, and we can Minimize, Maximize, Resize and Close our program. Close it now.</p>
+
+<blockquote>
+  <p>This is actually a complete and total program. We can officially call ourselves application developers! But now let’s make it more interesting and actually DO stuff.</p>
+</blockquote>
+
+<h3 id="step-3---adding-a-button">Step 3 - Adding a button</h3>
+
+<p>On the left hand side of the screen should be the word <code class="language-c highlighter-rouge"><span class="n">Toolbox</span></code>. Click it now, and then click the pin at the top of the new Toolbox. If you can’t see it at all, Click the <code class="language-c highlighter-rouge"><span class="n">View</span></code> menu up the top, and then <code class="language-c highlighter-rouge"><span class="n">Toolbox</span></code> in the list, then the <code class="language-c highlighter-rouge"><span class="n">pin</span></code> again. The image below should help with finding all these things in the <em>top left corner of the screen</em></p>
+
+<p><img src="/assets/img/vblessons/vbtoolboxlocation.png" alt="img" /></p>
+
+<p>Whenever we want to add something we can see, the Toolbox is where we get it. Find the <code class="language-c highlighter-rouge"><span class="n">Button</span></code> component in the toolbox, and drag one onto our <code class="language-c highlighter-rouge"><span class="n">Form1</span></code>.</p>
+
+<blockquote>
+  <p>We use these components because they come ready to use. These buttons and other things are clickable, have text, highlight and have all normal button functions already coded. We could absolutely make our own. But we don’t have to!</p>
+</blockquote>
+
+<h3 id="step-4---making-the-button-do-something">Step 4 - Making the button do something</h3>
+
+<p>To program something on our program that we can already see, the easiest way is to double click it. <code class="language-c highlighter-rouge"><span class="n">Double</span> <span class="n">click</span> <span class="n">the</span> <span class="n">button</span></code> you just added. You’ll get taken to the code screen for Form1, and VB will automatically put you in between 2 lines about the Button, because that’s what we double-clicked on. It should look like this, maybe with some different colours</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="k">Public</span> <span class="k">Class</span> <span class="nc">Form1</span>
+  <span class="k">Private</span> <span class="k">Sub</span> <span class="nf">Button1_Click</span><span class="p">(</span><span class="n">sender</span> <span class="ow">As</span> <span class="n">object</span><span class="p">,</span> <span class="n">e</span> <span class="ow">As</span> <span class="n">EventArgs</span><span class="p">)</span> <span class="k">Handles</span> <span class="n">Button1</span><span class="p">.</span><span class="n">Click</span>
+
+  <span class="k">End</span> <span class="k">Sub</span>
+<span class="k">End</span> <span class="k">Class</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>We will talk more about this code later, but for now, add the following line of code between <code class="language-c highlighter-rouge"><span class="n">Private</span> <span class="n">Sub</span></code> and <code class="language-c highlighter-rouge"><span class="n">End</span> <span class="n">Sub</span></code> then hit <strong>Enter</strong></p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>    <span class="n">Button1</span><span class="p">.</span><span class="n">Left</span> <span class="o">+=</span> <span class="mi">10</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>VB is nice enough to fix spaces and capitals, you just need to spell things correctly. If you do, there won’t be any blue squiggles and VB will make everything neat.
+Once you’ve written the code, Press <code class="language-c highlighter-rouge"><span class="n">Start</span> <span class="err">▶</span></code> again. Try clicking the button.</p>
+
+<blockquote>
+  <p><strong><em>Worksheet - Step 4</em></strong></p>
+  <ol>
+    <li>What happens when you click the button?</li>
+    <li>What code would you change to make it faster?</li>
+    <li>What code would you change to make it go the other way?</li>
+  </ol>
+</blockquote>
+
+<h3 id="step-5---other-events">Step 5 - Other events</h3>
+
+<p>By double clicking the button, we got VB to make a “Click” event for the button. Whenever we click it, it will run the code in that event. There are literally hundreds of events that buttons can respond to. Now we will change the event to something else. Stop the program by closing Form1 or finding the <code class="language-c highlighter-rouge"><span class="n">Stop</span> <span class="err">■</span></code> button up the top. (It only has the square, no words)</p>
+
+<blockquote>
+  <p>You can’t edit a program while it’s running! It would be like trying to fix your car while going down the highway!</p>
+</blockquote>
+
+<p>Then get back to the code (if you need to) by double-clicking on the button again.</p>
+
+<p>At the top of the code window is two boxes. The left one is the thing we’re coding (It should say “Button1” at the moment), and the right one is the Event we’re coding. It should say The right side should say “Click”, because we’re coding the <em>Click</em> event of <em>Button1</em>.</p>
+
+<p>Click on <code class="language-c highlighter-rouge"><span class="n">Click</span></code> and find <code class="language-c highlighter-rouge"><span class="n">MouseMove</span></code>. This event fires anytime the mouse moves while on top of the button. Copy your line of code from before into the new MouseMove event. When you’re done, your finished code should look like this. <strong><em>Don’t write the giant long lines that have <code class="language-c highlighter-rouge"><span class="n">sender</span></code> written in it. For 99% of what we are doing, it’s easier to make the computer write it</em></strong></p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="k">Public</span> <span class="k">Class</span> <span class="nc">Form1</span>
+  <span class="k">Private</span> <span class="k">Sub</span> <span class="nf">Button1_Click</span><span class="p">(</span><span class="n">sender</span> <span class="ow">As</span> <span class="n">object</span><span class="p">,</span> <span class="n">e</span> <span class="ow">As</span> <span class="n">EventArgs</span><span class="p">)</span> <span class="k">Handles</span> <span class="n">Button1</span><span class="p">.</span><span class="n">Click</span>
+    <span class="n">Button1</span><span class="p">.</span><span class="n">Left</span> <span class="o">+=</span> <span class="mi">10</span>
+  <span class="k">End</span> <span class="k">Sub</span>
+
+  <span class="k">Private</span> <span class="k">Sub</span> <span class="nf">Button1_MouseMove</span><span class="p">(</span><span class="n">sender</span> <span class="ow">As</span> <span class="n">object</span><span class="p">,</span> <span class="n">e</span> <span class="ow">As</span> <span class="n">EventArgs</span><span class="p">)</span> <span class="k">Handles</span> <span class="n">Button1</span><span class="p">.</span><span class="n">MouseMove</span>
+    <span class="n">Button1</span><span class="p">.</span><span class="n">Left</span> <span class="o">+=</span> <span class="mi">10</span>
+  <span class="k">End</span> <span class="k">Sub</span>
+<span class="k">End</span> <span class="k">Class</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Test out your program again.</p>
+
+<h3 id="step-6---better-movement">Step 6 - Better movement</h3>
+
+<p>This is already a little annoying, but we want lots of annoying. Next step is to make it randomly move instead of consistently. We need to add one line to get a random number generator, then change our movement line. We’ll consider the random generator a bit of “Code magic” at this point and come back to it in a later lesson</p>
+
+<p>Look up the top of your code for the two lines:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="k">Public</span> <span class="k">Class</span> <span class="nc">Form1</span>
+  <span class="k">Private</span> <span class="k">Sub</span> <span class="nf">Button1_Click</span><span class="p">(</span><span class="n">sender</span> <span class="p">.</span><span class="err">...</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>Between</strong> those lines, add the new one below so it looks like this:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="k">Public</span> <span class="k">Class</span> <span class="nc">Form1</span>
+  <span class="k">Dim</span> <span class="nv">r</span> <span class="n">as</span> <span class="k">New</span> <span class="n">Random</span>   <span class="c1">'This line is new!</span>
+  <span class="k">Private</span> <span class="k">Sub</span> <span class="nf">Button1_Click</span><span class="p">(</span><span class="n">sender</span> <span class="p">.</span><span class="err">..</span><span class="n">blah</span> <span class="n">blah</span> <span class="n">blah</span><span class="p">.</span><span class="err">..</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Lastly, we need to update our line of code that moves the button. Find the <code class="language-c highlighter-rouge"><span class="n">MouseMove</span></code> section, then change the code inside it from</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>  <span class="c1">'OLD: Change this line</span>
+  <span class="n">Button1</span><span class="p">.</span><span class="n">Left</span> <span class="o">+=</span> <span class="mi">10</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>to</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>  <span class="c1">'NEW: Code should look like this</span>
+  <span class="n">Button1</span><span class="p">.</span><span class="n">Left</span> <span class="o">=</span> <span class="n">r</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">1600</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>And test your changes. If your button immediately vanishes, make sure to make your window bigger by clicking the <code class="language-c highlighter-rouge"><span class="n">Maximise</span></code> button to make it fill the whole screen</p>
+
+      </div>
+
+
+  </div>
+
+  
+</div>
+<!--footer-->
+  <div class="w-auto bg-gray-700 h-auto flex justify-around p-4 text-xs px-64">
+    <div class="p-4 border border-gray-600 w-1/3 rounded text-gray-400 mx-2">
+      <p>This text hasn't been updated yet. Be nice!</p>
+    </div>
+    <div class="p-4 border border-gray-600 w-1/3 rounded text-gray-400 mx-2">
+      <p>This is my new site</p>
+    </div>
+    <div class="p-4 border border-gray-600 w-1/3 rounded text-gray-400 mx-2">
+      <p>This is the stuff I need to adjust later</p>
+    </div>
+  </div>
+  
+
+</body>
+
+</html>
