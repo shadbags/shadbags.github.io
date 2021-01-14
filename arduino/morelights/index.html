@@ -1,0 +1,278 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LED upgrade</title>
+  <link rel="stylesheet" href="/assets/css/site.css">
+</head>
+
+<body class="bg-gray-200">
+  <!--herobar-->
+  <div class=" bg-blue-500 h-12 shadow-outline text-white">
+    <h1 class="text-center text-3xl font-extrabold uppercase ">Mr Baggins Computer Technology</h1>
+  </div>
+
+  <div class=" container flex mx-auto flex-wrap px-2">
+    
+    <div class="my-4">
+      <div class="w-full rounded shadow bg-gray-100 py-4 px-8 my-2" id="section1">
+        <h1 id="led-upgrade">LED upgrade</h1>
+
+<p>Last time we used a tiny light that is built into the Arduino to test everything was working and to start learning about code. Now we’re going to upgrade to bigger, better, brighter lights, as well as explore adding more than one light at a time. The lights we’re using are called LED lights, or Light Emitting Diodes. Using the one on the Arduino is easiest because it’s already wired up, but we’re going to have to wire up all the new ones ourselves.</p>
+
+<h2 id="testing-an-led">Testing an LED</h2>
+
+<p>We need to be able to check if an LED is working, so that if our finished product isn’t working, we know it’s not because the LED is broken, narrowing down the problem. The easiest way is to plug the two legs on an LED into pins <code class="language-c highlighter-rouge"><span class="mi">13</span></code> and <code class="language-c highlighter-rouge"><span class="n">GND</span></code> as shown in the picture. LEDs only work in one direction of electricity, so it’s important to make sure that the long leg goes into the <code class="language-c highlighter-rouge"><span class="mi">13</span></code> hole while the shorter leg goes into <code class="language-c highlighter-rouge"><span class="n">GND</span></code>.</p>
+
+<p><img src="/assets/img/arduinolessons/ledOnPin13.png" alt="img" /></p>
+
+<p>Be careful! The long bendy legs are easy to accidentally bend, and sometimes the holes we’re pushing them into are a bit tight. A wiggle is better than pushing harder!</p>
+
+<p>Load up your blinky code from last time and make sure the new light is lighting up to match the on-board LED.</p>
+
+<h2 id="doing-it-properly">Doing it properly</h2>
+
+<p>Unfortunately, pin #13 is the only one we can plug an LED into like this. This is because pin 13 is set up with the LED already, and so it includes a resistor to protect the LED from excess current. Plugging in an LED to another pin without a resistor would break the LED (or maybe even the Arduino). This is because the Arduino happily pushes 500mA of current down each pin, but an LED only wants about 30mA. If we add a resistor, we can restrict the current down to a level that everything is happy with.</p>
+
+<p>We will need</p>
+<ul>
+  <li>a coloured LED of your choice</li>
+  <li>a 200Ω resistor</li>
+  <li>2 wires (best if 1 long and 1 short wire)</li>
+</ul>
+
+<p>The colour of the wires don’t matter. It’s nice to use colour coding, but not necessary while things are small like this.</p>
+
+<p>Wire up your new pieces as shown in the picture. Note the “bent” leg on the LED. This indicates it’s the long leg, and goes in the numbered pin, while the straight leg is the short one and will be connected to GND. You’ll find it easier to wire it up if you do it in the following order:</p>
+
+<ol>
+  <li>Bend the resistor into a ⊔ shape and insert the legs into two holes</li>
+  <li>Line up the short leg of the LED with one of the legs of the resistor, so it goes into the same ROW as the resistor leg</li>
+  <li>Line up the long leg one row higher</li>
+  <li>Push the LED in</li>
+  <li>Add the wire that connects the other resistor leg to GND</li>
+  <li>Add the wire that connects the LED long leg to #9</li>
+</ol>
+
+<p><img src="/assets/img/arduinolessons/oneledwired.png" alt="img" /></p>
+
+<blockquote>
+  <p>If the picture is too small, right click it and choose “Open image in new tab” to make it bigger.</p>
+</blockquote>
+
+<p>If you’re paying attention, you’ll notice we aren’t plugged into pin #13 any more. We’ll need to change our code to use the new pin number. Load up the blink code, change all the 13s into 9s, and upload the code. Make sure the light works!</p>
+
+<h2 id="more-lights">More lights!</h2>
+
+<p>Now, after doing all that work to get 1 light working, getting two lights is just some copy-paste work. First, lets wire up the second light. You’ll need another LED, another resistor, and 2 more wires.</p>
+
+<p><img src="/assets/img/arduinolessons/twoledswired.png" alt="img" /></p>
+
+<p>Once you’re wired up, we’re going to go through our code in 3 sections to make both lights work. Look at each section, find what’s different, and use copy-paste where you can to save typing so much.</p>
+
+<table class="text-left border shadow-lg">
+<thead>
+  <tr>
+    <th class="p-2">Old Code</th>
+    <th class="p-2">New Code</th>
+  </tr>
+</thead>
+<tbody>
+  <tr class="border">
+    <td class="py-2">
+
+        <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="k">const</span> <span class="kt">int</span> <span class="n">LED</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span>
+
+</pre></td></tr></tbody></table></code></pre></div>        </div>
+
+      </td>
+    <td class="p-2">
+        <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="k">const</span> <span class="kt">int</span> <span class="n">LED1</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">LED2</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div>        </div>
+      </td>
+  </tr>
+  <tr class="border">
+    <td class="py-2">
+
+        <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">LED</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+<span class="p">}</span>
+
+</pre></td></tr></tbody></table></code></pre></div>        </div>
+      </td>
+    <td class="p-2">
+        <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">LED1</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">LED2</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div>        </div>
+      </td>
+  </tr>
+  <tr class="border">
+    <td class="py-2">
+
+        <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+</pre></td></tr></tbody></table></code></pre></div>        </div>
+      </td>
+    <td class="p-2">
+        <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED1</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED2</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED1</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED2</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div>        </div>
+      </td>
+  </tr>
+</tbody>
+</table>
+
+<p>The first two parts are pretty easy. We just changed the name from <code class="language-c highlighter-rouge"><span class="n">LED</span></code> to <code class="language-c highlighter-rouge"><span class="n">LED1</span></code> and <code class="language-c highlighter-rouge"><span class="n">LED2</span></code> because the two lights need different names in the code. We have to copy the <code class="language-c highlighter-rouge"><span class="n">pinMode</span></code> line as well, otherwise the Arduino won’t give enough power to the new LED.</p>
+
+<h3 id="understanding-the-code">Understanding the code</h3>
+
+<p>The third part is a bit more complicated. Let’s have a closer look. Each line of code matches to one line of explanation on the side.</p>
+
+<table class="text-left border shadow-lg">
+<tbody>
+  <tr class="border">
+    <td class="py-2">
+
+        <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+</pre></td></tr></tbody></table></code></pre></div>        </div>
+      </td>
+    <td class="p-2">
+        <p>We always need a void loop</p>
+      </td>
+  </tr>
+
+  <tr class="border">
+    <td class="py-2">
+        <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED1</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED2</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div>        </div>
+      </td>
+    <td class="p-2">
+        <p>Turn LED1 on<br />
+Turn LED2 off<br />
+Wait one second</p>
+      </td>
+  </tr>
+  <tr class="border">
+    <td class="py-2">
+
+        <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED1</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED2</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div>        </div>
+      </td>
+    <td class="p-2">
+
+        <p>Turn LED1 off<br />
+Turn LED2 on<br />
+Wait one second</p>
+
+      </td>
+  </tr>
+   <tr class="border">
+    <td class="py-2">
+        <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="err">}</span>
+</pre></td></tr></tbody></table></code></pre></div>        </div>
+      </td>
+  <td class="py-2">
+        <p>Always the last thing in the file</p>
+      </td>
+  </tr>
+</tbody>
+</table>
+
+<p>Test out the new code, and make sure it’s working how you expect.</p>
+
+<h2 id="wrapping-up">Wrapping up</h2>
+
+<p>Try the following challenges to prove you understand what’s going on!</p>
+
+<blockquote>
+  <ol>
+    <li>Make the lights blink alternately (one on, one off)</li>
+    <li>Make the lights blink at the same time (both on, both off)</li>
+    <li>Make a red light that stays on for a long time (use <code class="language-c highlighter-rouge"><span class="n">delay</span><span class="p">(</span><span class="mi">5000</span></code> for the delay) then a green light that flashes a few times (Like a pedestrian crossing)</li>
+    <li>Make a police car siren lights (3 fast red flashes, 3 fast blue flashes)</li>
+    <li>Add a third light and make traffic lights (Red for a long time, Green for a little time, Orange for a medium time)</li>
+  </ol>
+</blockquote>
+
+
+      </div>
+
+
+  </div>
+
+  
+</div>
+<!--footer-->
+  <div class="w-auto bg-gray-700 h-auto flex justify-around p-4 text-xs px-64">
+    <div class="p-4 border border-gray-600 w-1/3 rounded text-gray-400 mx-2">
+      <p>This text hasn't been updated yet. Be nice!</p>
+    </div>
+    <div class="p-4 border border-gray-600 w-1/3 rounded text-gray-400 mx-2">
+      <p>This is my new site</p>
+    </div>
+    <div class="p-4 border border-gray-600 w-1/3 rounded text-gray-400 mx-2">
+      <p>This is the stuff I need to adjust later</p>
+    </div>
+  </div>
+  
+
+</body>
+
+</html>
