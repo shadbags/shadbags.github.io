@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Buttons 1</title>
+  <title>Buttons</title>
   <link rel="stylesheet" href="/assets/css/site.css">
 </head>
 
@@ -18,9 +18,116 @@
     
     <div class="my-4">
       <div class="w-full rounded shadow bg-gray-100 py-4 px-8 my-2" id="section1">
-        <h1 id="arduino-tutorial---making-noise">Arduino Tutorial - Making noise</h1>
+        <h1 id="pushing-buttons">Pushing buttons</h1>
 
-<p>Whil</p>
+<p>While the LED and buzzer are great to play with, and you can do a lot of things with them such as interactive signs, fancy christmas trees, and annoyotrons, it would be nice if we could actually make the Arduino do stuff <em>when we tell it to</em>. Lights and buzzers are <strong>outputs</strong> which mean they get information OUT of the Arduino and into our eyes and ears. It’s time we started looking at getting information IN to the Arduino with an input. And the simplest input is a button.</p>
+
+<p>Later, we’ll use light sensors, volume knobs, and even explore things like moisture detectors and thermometers. But buttons are the first step, just like 1 LED was our first step.</p>
+
+<p>Keep in mind, a button isn’t just a “thing you push with finger.” Roomba vacuums use what are basically giant buttons to tell if they’ve hit a wall. The interior light of your car uses a reverse button (if the button is pushed, the door is closed, keep light off). Buttons open up a LOT of options.</p>
+
+<p>The buttons we’re using are called “momentary switches” and they come in all shapes and sizes. The one’s we are using look like this (but about the size of your pinky nail):</p>
+
+<p><img src="/assets/img/arduinolessons/buttonsexample.png" alt="img" /></p>
+
+<h2 id="weird-things-first">Weird things first</h2>
+
+<p>There is one trap people fall into with buttons on Arduinos. To make the wiring easier, the coding is backwards. LEDs turn ON when <code class="language-c highlighter-rouge"><span class="n">HIGH</span></code>. Buttons when we use the <code class="language-c highlighter-rouge"><span class="n">PULLUP</span></code> shortcut are PRESSED when <code class="language-c highlighter-rouge"><span class="n">LOW</span></code>. We’ll add a line of code near the end to make this easier to read without getting mixed up.</p>
+
+<h2 id="wiring">Wiring</h2>
+
+<p>You probably still have an LED and a buzzer wired up. That’s fine, they can stay, just make sure the LED is wired into pin <code class="language-c highlighter-rouge"><span class="mi">13</span></code> as shown. If you don’t, you’ll need to rewire an LED back up first. Then add a button to pin <code class="language-c highlighter-rouge"><span class="mi">2</span></code> and <code class="language-c highlighter-rouge"><span class="n">GND</span></code>. The legs on the button can be a bit tricky to keep in the holes. Just make sure they go ACROSS the breadboard, not UP+DOWN.</p>
+
+<p><img src="/assets/img/arduinolessons/button1.png" alt="img" /></p>
+
+<h2 id="code">Code</h2>
+
+<p>Remember the way we have been writing code so far usually has 3 sections:</p>
+
+<ol>
+  <li>Code at the top to define numbers and variables we want to use</li>
+  <li>Setup to say how each pin will be used</li>
+  <li>Loop to actually do stuff</li>
+</ol>
+
+<p>This will be the same. Start a new Sketch (a new file in Arduino IDE)</p>
+
+<h3 id="part-1---define-the-variables">Part 1 - Define the variables</h3>
+
+<p>We need two numbers. One for the LED and one for the button. These have to match up to the ones we wired up to. Maybe you should try using different numbers in different pins when you’re done?</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="k">const</span> <span class="kt">int</span> <span class="n">buttonPin</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">LED</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="part-2---setup">Part 2 - Setup</h3>
+
+<p>Now we tell the Arduino what these 2 pins do. Note that the button one is different to everything we’ve done so far. This is because everything else has been an output. Now we’re doing an input (and using <code class="language-c highlighter-rouge"><span class="n">pullup</span></code> as a trick to make wiring easier).</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="kt">void</span> <span class="nf">setup</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">buttonPin</span><span class="p">,</span> <span class="n">INPUT_PULLUP</span><span class="p">);</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">LED</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="part-3---loop">Part 3 - Loop</h3>
+
+<p>We’re going to start super simple, then make it better later. Make your loop code look like this:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="kt">void</span> <span class="nf">loop</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED</span><span class="p">,</span> <span class="n">digitalRead</span><span class="p">(</span><span class="n">buttonPin</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="test-it">Test it!</h2>
+
+<p>Click the tick in the upper left corner of the screen. This will check if the code is valid. If it says “Done compiling” in the bottom right, you’re ready to go. If it turns orange, something went wrong. Double check the 3 sections above look the same.</p>
+
+<p>Once the tick passes, click the upload arrow next to it. When it says “Done uploading” try out your button.</p>
+
+<blockquote>
+  <p>If you get “Problem uploading to board” it means you forgot to set the Tools &gt; Port setting. Or you’re not plugged in.</p>
+</blockquote>
+
+<h2 id="its-alive">It’s alive!</h2>
+
+<p>Your button should control the light. It should be on all the time, and turn off when you press the button. That’s not a very “normal” use for a light. Let’s make it work backwards, by adding a single character to our code and not touching the wiring. Change the line inside loop so it looks like this:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED</span><span class="p">,</span> <span class="o">!</span><span class="n">digitalRead</span><span class="p">(</span><span class="n">buttonPin</span><span class="p">));</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>And then test it again by uploading your new code.</p>
+
+<h3 id="too-clever">Too clever</h3>
+
+<p>We’re being clever and doing a lot of stuff at once here. It’s worth explaining each bit:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>  <span class="n">digitalWrite</span>  <span class="p">(</span>  <span class="n">LED</span>   <span class="p">,</span>       <span class="o">!</span>         <span class="n">digitalRead</span>  <span class="p">(</span>  <span class="n">buttonPin</span>  <span class="p">));</span>
+  <span class="n">Set</span> <span class="n">The</span> <span class="nf">Value</span> <span class="p">(</span> <span class="n">of</span> <span class="n">LED</span> <span class="p">,</span>  <span class="n">to</span> <span class="n">opposite</span>    <span class="n">ofWhatever</span>   <span class="p">(</span> <span class="n">theButtonIs</span> <span class="p">));</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<ul>
+  <li><code class="language-c highlighter-rouge"><span class="n">digitalWrite</span></code> sets a pin (before the comma) to a value (after the comma)</li>
+  <li><code class="language-c highlighter-rouge"><span class="n">LED</span></code> is the pin we are setting (pin <code class="language-c highlighter-rouge"><span class="mi">13</span></code>)</li>
+  <li><code class="language-c highlighter-rouge"><span class="o">!</span></code> flips whatever is after it to it’s opposite</li>
+  <li><code class="language-c highlighter-rouge"><span class="n">digitalRead</span></code> sees if an input is on or off, remembering that PULLUP buttons are backwards</li>
+  <li><code class="language-c highlighter-rouge"><span class="n">buttonPin</span></code> is where the button is</li>
+</ul>
+
+<p>Don’t worry, it only gets more confusing! Practice helps a lot.</p>
+
 
       </div>
 
