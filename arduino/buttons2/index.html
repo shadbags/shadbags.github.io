@@ -4,23 +4,132 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>More buttons</title>
+  <title>Better buttons</title>
   <link rel="stylesheet" href="/assets/css/site.css">
 </head>
 
 <body class="bg-gray-200">
   <!--herobar-->
-  <div class=" bg-blue-500 h-12 shadow-outline text-white">
-    <h1 class="text-center text-3xl font-extrabold uppercase ">Mr Baggins Computer Technology</h1>
+  <div class=" bg-blue-500 md:h-12 shadow-outline text-white">
+    <h1 class="text-center md:text-3xl text-lg font-extrabold uppercase ">Mr Baggins Computer Technology</h1>
   </div>
 
-  <div class=" container flex mx-auto flex-wrap px-2">
+  <div class=" container flex mx-auto flex-wrap px-2 sm:px-1 ">
     
-    <div class="my-4">
-      <div class="w-full rounded shadow bg-gray-100 py-4 px-8 my-2" id="section1">
+    <div class="my-4 overflow-x-auto">
+      <div class="w-full rounded shadow bg-gray-100 md:py-4 py-1 md:px-8 px-2 md:my-2 my-0" id="section1">
         <h1 id="better-buttons">Better Buttons</h1>
 
 <p>First things first, we’re going to improve our button code so it’s easier to read. We’re going to do this by defining our own custom word in the code <code class="language-c highlighter-rouge"><span class="n">PRESSED</span></code> that means low, so instead of having to mentally flip “low = on” we can just read something closer to “if button = pressed” which makes way more sense.</p>
+
+<p>Way up the top of our Sketch (Remember, that’s what these code files are called), put this line under the one that sets LED to 13.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="cp">#define PRESSED LOW
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>This lets us create our own keyword <code class="language-c highlighter-rouge"><span class="n">PRESSED</span></code> that we can use instead of <code class="language-c highlighter-rouge"><span class="n">LOW</span></code> whenever we want. Now to use it, we will rewrite our <code class="language-c highlighter-rouge"><span class="n">loop</span></code> to also be much more readable rather than clever. Change your loop to look like this, paying careful attention to curly brackets, capitals and semicolons. Upload this code and make sure it works before continuing.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="kt">void</span> <span class="nf">loop</span><span class="p">(){</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">digitalRead</span><span class="p">(</span><span class="n">buttonPin</span><span class="p">)</span> <span class="o">==</span> <span class="n">PRESSED</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED</span><span class="p">,</span><span class="n">HIGH</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Try reading through this code out loud or in your head as English. “If reading the buttonPin is PRESSED then write the LED to HIGH…”</p>
+
+<h1 id="doing-more-with-a-button">Doing more with a button</h1>
+
+<p>Back a few lessons, we made an LED flash with the following four lines of code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>These turn the LED on, wait, turn it off, wait, then repeat</p>
+
+<p>There’s no reason this has to be our entire code though. We can put these 4 lines ANYWHERE we want to flash a light. Like for instance, whenever we push the button. Find the part in our code that matches this flashing code (The line of code that turns the LED on), and add the other 3 lines after it, so it looks like this:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="kt">void</span> <span class="nf">loop</span><span class="p">(){</span>
+   <span class="k">if</span> <span class="p">(</span><span class="n">digitalRead</span><span class="p">(</span><span class="n">buttonPin</span><span class="p">)</span> <span class="o">==</span> <span class="n">PRESSED</span><span class="p">){</span>  
+     <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED</span><span class="p">,</span><span class="n">HIGH</span><span class="p">);</span>                
+     <span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>                            <span class="c1">// NEW!</span>
+     <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>                <span class="c1">// NEW!</span>
+     <span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>                            <span class="c1">// NEW!</span>
+   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+     <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<blockquote>
+  <p>Now try it out and note what it does!</p>
+</blockquote>
+
+<h2 id="if-and-only-if">If and only if</h2>
+
+<p>We used the words <code class="language-c highlighter-rouge"><span class="k">if</span></code> and <code class="language-c highlighter-rouge"><span class="k">else</span></code> to split our code in half. The round brackets after if are a <em>condition</em>. The condition has to be something that is <code class="language-c highlighter-rouge"><span class="nb">true</span></code> or <code class="language-c highlighter-rouge"><span class="nb">false</span></code>. Our condition is whether or not the button is pressed.  If the button is pressed, the first chunk of code runs, which makes the light flash now. If it’s not true, the code jumps to <code class="language-c highlighter-rouge"><span class="k">else</span></code> and does whatever is after <code class="language-c highlighter-rouge"><span class="k">else</span></code> instead.</p>
+
+<p>In English it might sound like “If you have more than $4, buy a large chocolate milk, else buy a small chocolate milk” or in fake-code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>  <span class="k">if</span> <span class="p">(</span><span class="n">money</span> <span class="o">&gt;</span> <span class="err">$</span><span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">buymilk</span><span class="p">(</span><span class="n">Large</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="n">buymilk</span><span class="p">(</span><span class="n">small</span><span class="p">);</span>
+  <span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>It’s important that you get used to <code class="language-c highlighter-rouge"><span class="k">if</span></code> as it’s a very important building block for making our code, electronics or robots feel smart, making decisions that make sense or in response to their environment.</p>
+
+<h2 id="challenges">Challenges</h2>
+
+<p>Here is a list of things to try and do with buttons, lights, buzzers and <code class="language-c highlighter-rouge"><span class="k">if</span></code>. We’ve already ticked some off if you’ve followed along with the instructions.</p>
+
+<blockquote>
+  <ol>
+    <li>Make the button turn the light on and off</li>
+    <li>Make the button make the light flash</li>
+    <li>Make 2 lights, one that’s on when the button is not pushed, swapping to the other light when the button IS pushed. Sort of like a “mode selector” or “push to talk” button.</li>
+    <li>Make 2 lights that stay off until the button is pushed. When pushed, they flash alternately like a railway crossing that has detected a train coming.</li>
+    <li>Make 2 lights with 2 buttons. Each button controls just one light independently of the other.</li>
+    <li>Make 2 buttons with 1 light, where the light only comes on if BOTH buttons are pushed.</li>
+    <li>Make the opposite: the light only goes OFF when both buttons are pushed</li>
+    <li>Make a combination lock with 3 or 4 or more buttons: The light only comes on if the correct combination of buttons is held down at the same time.</li>
+  </ol>
+</blockquote>
+
+<p>Hopefully you can see that with just buzzers, lights and buttons we have opened up LOTS of possibilities. Don’t worry, we’ve still got plenty more to add too!</p>
 
       </div>
 
@@ -30,15 +139,37 @@
   
 </div>
 <!--footer-->
-  <div class="w-auto bg-gray-700 h-auto flex justify-around p-4 text-xs px-64">
-    <div class="p-4 border border-gray-600 w-1/3 rounded text-gray-400 mx-2">
-      <p>This text hasn't been updated yet. Be nice!</p>
+  <div class="w-auto bg-gray-700 h-auto flex justify-around p-2 text-xs lg:px-32 md:px-8 px-2  sm:px-1 ">
+    
+    <div class="md:p-4 p-2  w-1/3 text-gray-400 md:mx-2">
+      <h4 class="text-gray-300 my-0 border-b border-gray-500">Goals for this site</h4>
+
+      <ul class="">
+        <li>Resource for digital curriculum</li>
+        <li>Resource for learning various technologies</li>
+        <li>Resource for non-trained teachers teaching IT or digital technologies</li>
+        <li>Printable matching worksheets, lesson plans and teaching program</li>
+      </ul>
     </div>
-    <div class="p-4 border border-gray-600 w-1/3 rounded text-gray-400 mx-2">
-      <p>This is my new site</p>
+
+    <div class="md:p-4 p-2  w-1/3  text-gray-400 md:mx-2">
+      <h4 class="text-gray-300 my-0 border-b border-gray-500">How this site was made</h4>
+      <ul>
+        <li>Generated with Jekyll</li>
+        <li>Version control via git and published on GitHub Pages </li>
+        <li>Formatted with TailwindCSS</li>
+        <li>Images from Pixabay, Pexels and own work</li>
+      </ul>
     </div>
-    <div class="p-4 border border-gray-600 w-1/3 rounded text-gray-400 mx-2">
-      <p>This is the stuff I need to adjust later</p>
+    
+    <div class="md:p-4 p-2  w-1/3  text-gray-400 md:mx-2">
+      <h4 class="text-gray-300 my-0 border-b border-gray-500">About the Author</h4>
+      <ul>
+        <li>Regional High School teacher Australia</li>
+        <li>Creating this for own use in classrooms </li>
+        <li>Potentially releasing workbooks for sale</li>
+        <li>Contact info coming once site  more complete and workbooks nearing completion</li>
+      </ul>
     </div>
   </div>
   

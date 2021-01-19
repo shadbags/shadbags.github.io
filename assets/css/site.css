@@ -576,6 +576,18 @@ p {
   margin-bottom: 0.5rem;
 }
 
+pre {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+@media (min-width: 768px) {
+  pre {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
 ul, ol{
   margin-left: 0.5rem;
   counter-reset: li;
@@ -620,18 +632,27 @@ blockquote {
   border-color: rgba(96, 165, 250, var(--tw-border-opacity));
   border-radius: 0.25rem;
   border-width: 1px;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  margin-left: 2rem;
-  margin-right: 2rem;
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
   --tw-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
   --tw-text-opacity: 1;
   color: rgba(30, 64, 175, var(--tw-text-opacity));
+}
+
+@media (min-width: 768px) {
+  blockquote {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
 
 a {
@@ -694,6 +715,7 @@ code.highlighter-rouge{
   box-sizing: border-box;
   height: 24px;
   overflow: hidden;
+  max-width: 100%;
 }
 
 div.highlighter-rouge, figure.highlighter-rouge, code.highlighter-rouge, figure.highlight{
