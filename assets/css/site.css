@@ -625,6 +625,12 @@ img {
   width: 50%;
 }
 
+@media (min-width: 1024px) {
+  img {
+    width: 25%;
+  }
+}
+
 blockquote {
   --tw-bg-opacity: 1;
   background-color: rgba(219, 234, 254, var(--tw-bg-opacity));

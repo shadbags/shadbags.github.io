@@ -172,6 +172,26 @@ Once you’ve written the code, Press <code class="language-c highlighter-rouge"
 
 <p>And test your changes. If your button immediately vanishes, make sure to make your window bigger by clicking the <code class="language-c highlighter-rouge"><span class="n">Maximise</span></code> button to make it fill the whole screen</p>
 
+<h3 id="step-7---going-up-and-down">Step 7 - Going up and down</h3>
+
+<p>We’re using this line of code to move the <code class="language-c highlighter-rouge"><span class="n">Left</span></code> side of the button to a random number between 0 (left side of screen) and 1600 (near the right side). We can do the exact same thing by moving the <code class="language-c highlighter-rouge"><span class="n">Top</span></code> side of <code class="language-c highlighter-rouge"><span class="n">Button1</span></code>. We need to make the number smaller because the screen isn’t as tall as it is wide.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>  <span class="n">Button1</span><span class="p">.</span><span class="n">Left</span> <span class="o">=</span> <span class="n">r</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">1600</span><span class="p">)</span>
+  <span class="n">Button1</span><span class="p">.</span><span class="n">Top</span> <span class="o">=</span> <span class="n">n</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">900</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Test it out, and make sure you <code class="language-c highlighter-rouge"><span class="n">Maximise</span></code> your program to see it all</p>
+
+<h3 id="wrapping-up">Wrapping up</h3>
+
+<p>The last things worth doing before moving on to the rest of this project is to make your button look nicer. Don’t worry about colours, because we’ll be changing them in code soon anyway. But changing the <code class="language-c highlighter-rouge"><span class="n">Font</span></code> and <code class="language-c highlighter-rouge"><span class="n">Text</span></code> of the button is worth doing. Go back to <code class="language-c highlighter-rouge"><span class="n">Design</span></code> view (Look for <code class="language-c highlighter-rouge"><span class="p">[</span><span class="n">Design</span><span class="p">]</span></code> in the tabs above your code), right click your button, and click <code class="language-c highlighter-rouge"><span class="n">Properties</span></code>. You’ll have a big list in the bottom right.</p>
+
+<p><img src="/assets/img/vblessons/clickmebuttonfont.png" alt="img" /></p>
+
+<p>Look for <code class="language-c highlighter-rouge"><span class="n">Text</span></code> and change it from <code class="language-c highlighter-rouge"><span class="s">"Button1"</span></code> to something else like “<code class="language-c highlighter-rouge"><span class="n">Click</span> <span class="n">Me</span><span class="o">!</span><span class="s">"</span></code> Then look for <code class="language-c highlighter-rouge"><span class="n">Font</span></code>, click it, then click the little <code class="language-c highlighter-rouge"><span class="p">...</span></code> that shows up. It will give you a screen to change the font and size. Once your button is done, move onto part two!</p>
+
       </div>
 
 

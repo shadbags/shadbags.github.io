@@ -1,0 +1,211 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Finishing Click Me</title>
+  <link rel="stylesheet" href="/assets/css/site.css">
+</head>
+
+<body class="bg-gray-200">
+  <!--herobar-->
+  <div class=" bg-blue-500 md:h-12 shadow-outline text-white">
+    <h1 class="text-center md:text-3xl text-lg font-extrabold uppercase ">Mr Baggins Computer Technology</h1>
+  </div>
+
+  <div class=" container flex mx-auto flex-wrap px-2 sm:px-1 ">
+    
+    <div class="my-4 overflow-x-auto">
+      <div class="w-full rounded shadow bg-gray-100 md:py-4 py-1 md:px-8 px-2 md:my-2 my-0" id="section1">
+        <h1 id="making-our-form-look-right">Making our form look right</h1>
+
+<p>We need to upgrade our prank program. At the moment, it really only works by covering the whole screen in grey before moving a button around. There’s also a close button that’s too easy to find. We want our program to be annoying and bouncing around over the top of the person’s work or YouTube videos. So let’s do that today. We’ll also add random colours to increase the annoyingness.</p>
+
+<h2 id="the-plan">The plan</h2>
+
+<p>We should write down exactly what we want to do:</p>
+
+<ul>
+  <li>Make the program not have a grey background</li>
+  <li>Make the button change colours randomly</li>
+  <li>Make a border with an extra colour for extra colour.</li>
+</ul>
+
+<h3 id="step-1---fix-the-background">Step 1 - Fix the background</h3>
+
+<p>At the moment, our button has the window frame at the top we want to get rid of:</p>
+
+<p><img src="/assets/img/vblessons/clickme1bad.png" alt="img" /></p>
+
+<p>We need to go to our Form Properties (Click once on the space AROUND the button) and look through the list for <code class="language-c highlighter-rouge"><span class="n">FormBorderStyle</span></code> which we want to set to <code class="language-c highlighter-rouge"><span class="n">None</span></code>. That fixes the window frame issue, and stops people closing our program as easily. We still have the stop button!</p>
+
+<p>Now, make the form (the big empty area around the button) a decent size square. This will be the coloured border around our rectangle.</p>
+
+<p>Then make the button just a little bit smaller than the border. If you drag the button around, you’ll get little blue helpers to give you some space from the edge. That’s the perfect amount. Get the space in one corner, then use the little white box on the other corner to resize the button until you have an even border, like this.</p>
+
+<p><img src="/assets/img/vblessons/clickme2better.png" alt="img" /></p>
+
+<p>Now we need to make this work, because currently if we run it, our fancy button just vanishes and leaves a coloured square on the screen.</p>
+
+<h3 id="step-2---moving-the-whole-thing">Step 2 - Moving the whole thing</h3>
+
+<p>This is an easy change. Before, we moved the button. Now we want to move the whole window (because the window is that border). All we have to do is change <code class="language-c highlighter-rouge"><span class="n">Button1</span></code> in the code to instead move the window around. But what’s the name of the window?</p>
+
+<p>Now, double click on our button to get into our code. The window we are currently in is called <code class="language-c highlighter-rouge"><span class="n">Form1</span></code>. But in code, we actually refer to it as <code class="language-c highlighter-rouge"><span class="n">Me</span></code>. So change the two <code class="language-c highlighter-rouge"><span class="n">Button1</span></code> words in your code to <code class="language-c highlighter-rouge"><span class="n">Me</span></code>, like this:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>  <span class="c1">'Old code</span>
+  <span class="n">Button1</span><span class="p">.</span><span class="n">Left</span> <span class="o">=</span> <span class="n">r</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">1600</span><span class="p">)</span>
+  <span class="n">Button1</span><span class="p">.</span><span class="n">Top</span> <span class="o">=</span> <span class="n">n</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">900</span><span class="p">)</span>
+
+  <span class="c1">'New code (Change the word button1 to Me, twice)</span>
+  <span class="k">Me</span><span class="p">.</span><span class="n">Left</span> <span class="o">=</span> <span class="n">r</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">1600</span><span class="p">)</span>
+  <span class="k">Me</span><span class="p">.</span><span class="n">Top</span> <span class="o">=</span> <span class="n">n</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">900</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Easy as! Check that it works!</p>
+
+<h3 id="step-3---button-colour">Step 3 - Button Colour</h3>
+
+<p>First up: A warning. Visual Basic (And all other programming languages) are American. They spell “Colour” as “Color”. We need to do the same in code, else it won’t work.</p>
+
+<p>Look for the 2 lines that make it jump around, and make some space just underneath for this giant long line:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>  <span class="c1">'Old code</span>
+  <span class="k">Me</span><span class="p">.</span><span class="n">Left</span> <span class="o">=</span> <span class="n">r</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">1600</span><span class="p">)</span>
+  <span class="k">Me</span><span class="p">.</span><span class="n">Top</span> <span class="o">=</span> <span class="n">n</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">900</span><span class="p">)</span>
+
+  <span class="c1">'New code</span>
+  <span class="n">Button1</span><span class="p">.</span><span class="n">BackColor</span> <span class="o">=</span> <span class="n">Color</span><span class="p">.</span><span class="n">FromArgb</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span> <span class="n">r</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span> <span class="n">r</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">255</span><span class="p">))</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>You might need to scroll sideways to see the end of the code!</p>
+
+<blockquote>
+  <h4 id="got-an-error-check-these">Got an error? Check these:</h4>
+  <ul>
+    <li><code class="language-c highlighter-rouge"><span class="n">Color</span></code> has no “u” in it (2 spots to check)</li>
+    <li><code class="language-c highlighter-rouge"><span class="n">r</span><span class="p">.</span><span class="n">next</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span></code> is in there 3 times</li>
+    <li>You’ve put the <code class="language-c highlighter-rouge"><span class="p">(</span></code> and <code class="language-c highlighter-rouge"><span class="p">)</span></code> in the right spots (and have 2 at the end)</li>
+    <li>You spelled <code class="language-c highlighter-rouge"><span class="n">ARGB</span></code> right</li>
+  </ul>
+</blockquote>
+
+<p>Once it doesn’t yell at you, trying running your program. When you try to catch it, the button should change colour! Keep fixing it until it works.</p>
+
+<h3 id="step-3---more-colours">Step 3 - More colours.</h3>
+
+<p>Alright, now that we have one colour down, let’s do two more. Copy your <code class="language-c highlighter-rouge"><span class="n">Button1</span><span class="p">.</span><span class="n">BackColor</span></code> line and paste it right underneath. Then change <code class="language-c highlighter-rouge"><span class="n">BackColor</span></code> to <code class="language-c highlighter-rouge"><span class="n">ForeColor</span></code>, like this:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>  <span class="n">Button1</span><span class="p">.</span><span class="n">BackColor</span> <span class="o">=</span> <span class="n">Color</span><span class="p">.</span><span class="n">FromArgb</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span> <span class="n">r</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span> <span class="n">r</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">255</span><span class="p">))</span>
+  <span class="n">Button1</span><span class="p">.</span><span class="n">ForeColor</span> <span class="o">=</span> <span class="n">Color</span><span class="p">.</span><span class="n">FromArgb</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span> <span class="n">r</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span> <span class="n">r</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">255</span><span class="p">))</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Test it out. What part of the program does <code class="language-c highlighter-rouge"><span class="n">ForeColor</span></code> change?</p>
+
+<h3 id="step-4---one-more-colour">Step 4 - One more colour</h3>
+
+<p>Last part to change is the border colour. Easy to do. We just want to change the <code class="language-c highlighter-rouge"><span class="n">BackColor</span></code> of the form (or <code class="language-c highlighter-rouge"><span class="n">Me</span></code>). Can you do it without using the code below? You need to add this as one more line at the end.</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>  <span class="k">Me</span><span class="p">.</span><span class="n">BackColor</span> <span class="o">=</span> <span class="n">Color</span><span class="p">.</span><span class="n">FromArgb</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span> <span class="n">r</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span> <span class="n">r</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">255</span><span class="p">))</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Check that it works!</p>
+
+<p>Your final code should look like this:</p>
+
+<div class="language-vb highlighter-rouge"><div class="highlight"><pre class="highlighter-rouge"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="k">Public</span> <span class="k">Class</span> <span class="nc">Form1</span>
+    <span class="k">Dim</span> <span class="nv">r</span> <span class="ow">As</span> <span class="k">New</span> <span class="n">Random</span>
+    <span class="k">Private</span> <span class="k">Sub</span> <span class="nf">Button1_MouseMove</span><span class="p">(</span><span class="n">sender</span> <span class="ow">As</span> <span class="kt">Object</span><span class="p">,</span> <span class="n">e</span> <span class="ow">As</span> <span class="n">MouseEventArgs</span><span class="p">)</span> <span class="k">Handles</span> <span class="n">Button1</span><span class="p">.</span><span class="n">MouseMove</span>
+        <span class="k">Me</span><span class="p">.</span><span class="n">Left</span> <span class="o">=</span> <span class="n">r</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">1600</span><span class="p">)</span>
+        <span class="k">Me</span><span class="p">.</span><span class="n">Top</span> <span class="o">=</span> <span class="n">r</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">900</span><span class="p">)</span>
+        <span class="n">Button1</span><span class="p">.</span><span class="n">BackColor</span> <span class="o">=</span> <span class="n">Color</span><span class="p">.</span><span class="n">FromArgb</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span> <span class="n">r</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span> <span class="n">r</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">255</span><span class="p">))</span>
+        <span class="n">Button1</span><span class="p">.</span><span class="n">ForeColor</span> <span class="o">=</span> <span class="n">Color</span><span class="p">.</span><span class="n">FromArgb</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span> <span class="n">r</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span> <span class="n">r</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">255</span><span class="p">))</span>
+        <span class="k">Me</span><span class="p">.</span><span class="n">BackColor</span> <span class="o">=</span> <span class="n">Color</span><span class="p">.</span><span class="n">FromArgb</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span> <span class="n">r</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span> <span class="n">r</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">255</span><span class="p">))</span>
+    <span class="k">End</span> <span class="k">Sub</span>
+<span class="k">End</span> <span class="k">Class</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="wrapping-up">Wrapping up</h3>
+
+<p>At this point you should be done! You actually have a program that you can take home and run to annoy people with. If you want to make it even more annoying, try the following challenges:</p>
+
+<ul>
+  <li>Make the window stay near the middle of the screen by giving the random number generator a range to stay in like this: <code class="language-c highlighter-rouge"><span class="n">Me</span><span class="p">.</span><span class="n">Left</span> <span class="o">=</span> <span class="n">r</span><span class="p">.</span><span class="n">next</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span><span class="mi">800</span><span class="p">)</span></code></li>
+  <li>Add the word <code class="language-c highlighter-rouge"><span class="n">Beep</span><span class="p">()</span></code> to your code. What does it do? (Make sure you have sound on)</li>
+  <li>Change the writing size when it moves by using <code class="language-c highlighter-rouge"><span class="n">Button1</span><span class="p">.</span><span class="n">Font</span><span class="p">.</span><span class="n">Size</span></code></li>
+  <li>Change the size of the window and button when it moves using <code class="language-c highlighter-rouge"><span class="n">Button1</span><span class="p">.</span><span class="n">Height</span></code>, <code class="language-c highlighter-rouge"><span class="n">Button1</span><span class="p">.</span><span class="n">Width</span></code>, <code class="language-c highlighter-rouge"><span class="n">Me</span><span class="p">.</span><span class="n">Height</span></code>, <code class="language-c highlighter-rouge"><span class="n">Me</span><span class="p">.</span><span class="n">Width</span></code>. This is tricky to make it look right, you’ll end up with cut off buttons a LOT.</li>
+</ul>
+
+      </div>
+
+
+  </div>
+
+  
+</div>
+<!--footer-->
+  <div class="w-auto bg-gray-700 h-auto flex justify-around p-2 text-xs lg:px-32 md:px-8 px-2  sm:px-1 ">
+    
+    <div class="md:p-4 p-2  w-1/3 text-gray-400 md:mx-2">
+      <h4 class="text-gray-300 my-0 border-b border-gray-500">Goals for this site</h4>
+
+      <ul class="">
+        <li>Resource for digital curriculum</li>
+        <li>Resource for learning various technologies</li>
+        <li>Resource for non-trained teachers teaching IT or digital technologies</li>
+        <li>Printable matching worksheets, lesson plans and teaching program</li>
+      </ul>
+    </div>
+
+    <div class="md:p-4 p-2  w-1/3  text-gray-400 md:mx-2">
+      <h4 class="text-gray-300 my-0 border-b border-gray-500">How this site was made</h4>
+      <ul>
+        <li>Generated with Jekyll</li>
+        <li>Version control via git and published on GitHub Pages </li>
+        <li>Formatted with TailwindCSS</li>
+        <li>Images from Pixabay, Pexels and own work</li>
+      </ul>
+    </div>
+    
+    <div class="md:p-4 p-2  w-1/3  text-gray-400 md:mx-2">
+      <h4 class="text-gray-300 my-0 border-b border-gray-500">About the Author</h4>
+      <ul>
+        <li>Regional High School teacher Australia</li>
+        <li>Creating this for own use in classrooms </li>
+        <li>Potentially releasing workbooks for sale</li>
+        <li>Contact info coming once site  more complete and workbooks nearing completion</li>
+      </ul>
+    </div>
+  </div>
+  
+
+</body>
+
+</html>
